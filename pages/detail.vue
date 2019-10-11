@@ -1,10 +1,27 @@
 <template>
   <div class="container">
-    <b-card title="Title" img-src="https://wallpapersite.com/images/pages/pic_w/15948.jpg" img-alt="Image" img-top to="/detail">
+    <b-card :title="this.dataMovie.title"
+            :img-src="'https://image.tmdb.org/t/p/w1000_and_h563_face'+this.dataMovie.backdrop_path"
+             img-alt="Image" img-top to="/detail">
       <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This content is a little bit longer.
+        {{this.dataMovie.overview}}
       </b-card-text>
   </b-card>
   </div>
 </template>
+
+<script>
+    import { mapState } from "vuex";
+
+    export default {
+        layout: 'layouts/default',
+        computed:{
+            ...mapState({dataMovie: state => state.dataMovie}),
+
+        },
+        data(){
+            return {
+            };
+        }
+    };
+</script>
